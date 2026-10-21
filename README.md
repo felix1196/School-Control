@@ -2,13 +2,19 @@
 
 School management system (Spanish/English) for administrators, teachers and students. No dependencies; requires Node.js 18+.
 
-## Run
+## Live demo (GitHub Pages)
+
+https://felix1196.github.io/School-Control/
+
+The demo runs entirely in the browser: data is stored in `localStorage` (per browser, not shared between users) and there is no server. Use "Reset demo data" on the login screen to restore the sample data. It is a demo only, not for real student data.
+
+## Run with the Node server
 
 ```
 node server.js
 ```
 
-Open http://localhost:3000. Demo data is created on first start (`data.json`, git-ignored).
+Open http://localhost:3000. Data is stored in `data.json` (git-ignored). On localhost the app uses the server; add `?demo=1` to use the in-browser demo backend instead.
 
 ## Features
 

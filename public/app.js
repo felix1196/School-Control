@@ -34,7 +34,7 @@ const EN = {
   'Asignar': 'Assign', 'Inscripciones': 'Enrollments',
   'Situación académica por alumno': 'Academic standing by student', 'Reprobadas': 'Failed', 'Todo aprobado': 'All passed', '1 materia reprobada': '1 failed subject',
   '{n} materias reprobadas': '{n} failed subjects', 'Sin calificaciones': 'No grades',
-  'Guardado ✅': 'Saved ✅', '🎓 Alumnos': '🎓 Students', '👨‍🏫 Maestros': '👨‍🏫 Teachers', '🛡️ Administradores': '🛡️ Administrators',
+  'Guardado ✅': 'Saved ✅', 'Restablecer datos de demostración': 'Reset demo data', '¿Restablecer los datos de demostración?': 'Reset the demo data?', '🎓 Alumnos': '🎓 Students', '👨‍🏫 Maestros': '👨‍🏫 Teachers', '🛡️ Administradores': '🛡️ Administrators',
   'Nuevo alumno': 'New student', 'Nuevo maestro': 'New teacher', 'Nuevo administrador': 'New administrator',
   'Alumnos': 'Students', 'Maestros': 'Teachers', 'Administradores': 'Administrators', 'Se actualiza automáticamente': 'Updates automatically', '🔔 Tus calificaciones se actualizaron': '🔔 Your grades were updated',
   '{a} de {b} parciales calificados': '{a} of {b} midterms graded', 'Actualizada': 'Updated', 'Última actualización': 'Last updated', 'Actualizado ✅': 'Updated ✅', 'Semestre actual cambiado ✅': 'Current semester changed ✅', '¿Seguro que deseas eliminar?': 'Are you sure you want to delete?',
@@ -106,9 +106,10 @@ function loginView() {
     <input name="p" type="password" placeholder="${t('Contraseña')}" autocomplete="current-password" required>
     <button class="btn block">${t('Entrar')}</button>
     <div class="demo"><b>${t('Cuentas de prueba')}</b><br>${t('Admin')}: <code>admin</code> / <code>admin123</code><br>
-    ${t('Maestro')}: <code>laura</code> / <code>maestro123</code><br>${t('Alumno')}: <code>luis</code> / <code>alumno123</code></div>
+    ${t('Maestro')}: <code>laura</code> / <code>maestro123</code><br>    ${t('Alumno')}: <code>luis</code> / <code>alumno123</code>${window.DEMO_MODE ? `<br><a href="#" id="reset">${t('Restablecer datos de demostración')}</a>` : ''}</div>
   </form></div>`;
   bindPrefs();
+      const rs = $('#reset'); if (rs) rs.onclick = e => { e.preventDefault(); if (confirm(t('¿Restablecer los datos de demostración?'))) window.resetDemo(); };
   $('#lf').onsubmit = e => { e.preventDefault(); act(async () => {
     const d = await api('/login', 'POST', { username: e.target.u.value, password: e.target.p.value });
     token = d.token; user = d.user; localStorage.setItem('token', token); tab = ''; render();
