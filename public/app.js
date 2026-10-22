@@ -105,8 +105,7 @@ function loginView() {
     <input name="u" placeholder="${t('Usuario')}" autocomplete="username" required>
     <input name="p" type="password" placeholder="${t('Contraseña')}" autocomplete="current-password" required>
     <button class="btn block">${t('Entrar')}</button>
-    <div class="demo"><b>${t('Cuentas de prueba')}</b><br>${t('Admin')}: <code>admin</code> / <code>admin123</code><br>
-    ${t('Maestro')}: <code>laura</code> / <code>maestro123</code><br>    ${t('Alumno')}: <code>luis</code> / <code>alumno123</code>${window.DEMO_MODE ? `<br><a href="#" id="reset">${t('Restablecer datos de demostración')}</a>` : ''}</div>
+    ${window.DEMO_MODE ? `<div class="demo"><a href="#" id="reset">${t('Restablecer datos de demostración')}</a></div>` : ''}
   </form></div>`;
   bindPrefs();
       const rs = $('#reset'); if (rs) rs.onclick = e => { e.preventDefault(); if (confirm(t('¿Restablecer los datos de demostración?'))) window.resetDemo(); };

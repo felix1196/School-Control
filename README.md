@@ -26,7 +26,7 @@ Open http://localhost:3000. Data is stored in `data.json` (git-ignored). On loca
 
 ## Demo accounts
 
-Demo credentials are for local testing only; change them before real use.
+Demo credentials are no longer shown on the login screen. They are for testing only; change them before real use. More sample students: ana, maria (password `alumno123`); another teacher: carlos (`maestro123`).
 
 | Role | User | Password |
 |---|---|---|
